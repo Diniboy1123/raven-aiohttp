@@ -68,8 +68,7 @@ class AioHttpTransportBase(
         return self._family
 
     def _client_session_factory(self):
-        connector = aiohttp.TCPConnector(verify_ssl=self.verify_ssl,
-                                         family=self.family,
+        connector = aiohttp.TCPConnector(family=self.family,
                                          loop=self._loop)
         return aiohttp.ClientSession(connector=connector,
                                      loop=self._loop)
