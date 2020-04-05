@@ -68,10 +68,8 @@ class AioHttpTransportBase(
         return self._family
 
     def _client_session_factory(self):
-        connector = aiohttp.TCPConnector(family=self.family,
-                                         loop=self._loop)
-        return aiohttp.ClientSession(connector=connector,
-                                     loop=self._loop)
+        connector = aiohttp.TCPConnector(family=self.family)
+        return aiohttp.ClientSession(connector=connector)
 
     @asyncio.coroutine
     def _do_send(self, url, data, headers, success_cb, failure_cb):
